@@ -1,4 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_trbarcode_configuration,trbarcode.configuration,model_trbarcode_configuration,group_3barcode_labels,1,1,1,1
-access_trbarcode_labels,trbarcode.labels,model_trbarcode_labels,group_3barcode_labels,1,1,1,1
-access_trbarcode_product_lines,trbarcode.product.lines,model_trbarcode_product_lines,group_3barcode_labels,1,1,1,1
