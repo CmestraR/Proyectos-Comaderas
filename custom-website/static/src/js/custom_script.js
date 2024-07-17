@@ -171,11 +171,5 @@ odoo.define('website.user_custom_code', function (require) {
                 }
             });
         },
-
-        _setPersonType: function () {
-            console.log('_setPersonType called');
-            // Lógica para establecer la responsabilidad tributaria
-            // Implementa tu lógica aquí
-        },
     });
 });

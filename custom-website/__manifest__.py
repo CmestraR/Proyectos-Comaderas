@@ -8,7 +8,7 @@
         Modulo para customizar el website, este modulo contiene los archivos JavaScript y CSS para 
     """,
     'data': [
-        'views/',
+        'views/template.xml',
     ],
     'installable': True,
     'auto_install': False,
