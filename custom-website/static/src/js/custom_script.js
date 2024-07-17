@@ -129,30 +129,31 @@ odoo.define('website.user_custom_code', function (require) {
                         console.log('Zip code found:', zip);
                         $('input[name="zip"]').val(zip).prop('readonly', true);
                         $('select[name="state_id"]').val(state).prop('disabled', true); // Asignar el estado y hacer que no sea editable
-                        $('select[name="country_id"]').val(49).prop('disabled', true); // Establecer el país a Colombia (ID 49) y hacerlo no editable
+                        $('select[name="country_id"]').val(49).prop('disabled', false); // Establecer el país a Colombia (ID 49) y hacerlo no editable
 
                         // Obtener y establecer la responsabilidad tributaria
                         self._setPersonType();
                     }
                 } else {
-                    // Mostrar mensaje de error si no se encontraron registros
+                    // No se encontraron registros
+                    console.log('No records found');
                     $('input[name="zip"]').val('No Disponible').prop('readonly', true);
-                    var errorMessage = 'No se encontró la ciudad: ' + city + '. Revisa que esté bien escrito o ponte en contacto con nosotros.';
+                    var errorMessage = 'No se encontraron ciudades que coincidan con ' + city + '.';
                     var dialog = new Dialog(self, {
                         title: 'Ciudad No Encontrada',
                         size: 'medium',
                         $content: $('<div>').text(errorMessage),
                         buttons: [{
-                            text: 'Ver todos los códigos postales',
+                            text: 'Aceptar',
                             classes: 'btn-primary',
                             click: function () {
-                                window.location.href = 'https://comaderas-tests-2205-13793766.dev.odoo.com/codigos-postales';
+                                dialog.close();
                             }
                         }]
                     });
                     dialog.open();
                     $('select[name="state_id"]').val('').prop('disabled', true);
-                    $('select[name="country_id"]').val('').prop('disabled', true);
+                    $('select[name="country_id"]').val('').prop('disabled', false);
                 }
             }).catch(function (error) {
                 console.error('Error fetching city data:', error);
@@ -166,7 +167,7 @@ odoo.define('website.user_custom_code', function (require) {
                     // Manejar otros errores de manera adecuada
                     $('input[name="zip"]').val('').prop('readonly', true); // Limpia el campo en caso de error
                     $('select[name="state_id"]').val('').prop('disabled', true);
-                    $('select[name="country_id"]').val('').prop('disabled', true);
+                    $('select[name="country_id"]').val('').prop('disabled', false);
                 }
             });
         },
