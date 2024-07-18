@@ -144,9 +144,10 @@ odoo.define('website.user_custom_code', function (require) {
                         size: 'medium',
                         $content: $('<div>').text(errorMessage),
                         buttons: [{
-                            text: 'Aceptar',
+                            text: 'Contactanos',
                             classes: 'btn-primary',
                             click: function () {
+                                window.open('https://api.whatsapp.com/send?phone=573185202411', '_blank');
                                 dialog.close();
                             }
                         }]
