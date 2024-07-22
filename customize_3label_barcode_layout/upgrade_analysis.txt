@@ -1,3 +1,0 @@
----Models in module 'customize_3label_barcode_layout'---
----Fields in module 'customize_3label_barcode_layout'---
----XML records in module 'customize_3label_barcode_layout'---
