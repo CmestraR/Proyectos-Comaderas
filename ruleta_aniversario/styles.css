@@ -1,0 +1,110 @@
+:root {
+    --escala: 400px;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Evita el desplazamiento */
+}
+
+#main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw; /* 100% del viewport width */
+    height: 100vh; /* 100% del viewport height */
+    position: relative;
+    overflow: hidden; /* Evita el desbordamiento del contenido */
+}
+
+#fondo {
+    position: absolute; /* Asegura que la imagen de fondo cubra todo el viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Evita el desbordamiento de la imagen */
+    z-index: 0;
+}
+
+.fondo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que la imagen cubra el contenedor sin distorsionarse */
+}
+
+#container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+#sortear {
+    position: absolute; /* Mantiene el botón en el centro de la pantalla */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2; /* Asegura que el botón esté por encima de todo */
+    width: 400px;
+    height: 200px;
+    border: 5px solid black;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column; /* Coloca la imagen arriba y el texto abajo */
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* Centra el texto dentro del botón */
+    color: white; /* Color del texto */
+    font-size: 24px; /* Tamaño del texto */
+    font-weight: bold; /* Grosor del texto */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra para mayor visibilidad */
+    background-color: transparent; /* Fondo del botón transparente */
+    padding: 20px; /* Espacio interno adicional para evitar que el contenido toque los bordes */
+    box-sizing: border-box; /* Incluye el padding y el borde en el tamaño total del botón */
+}
+
+#sortear::before {
+    content: '';
+    display: block;
+    width: 80px; /* Ajusta el tamaño de la imagen */
+    height: 80px; /* Ajusta el tamaño de la imagen */
+    background-image: url('/imagenes/logo.png'); /* Cambia la ruta a la imagen deseada */
+    background-size: contain; /* Ajusta el tamaño de la imagen dentro del pseudo-elemento */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: center; /* Centra la imagen en el pseudo-elemento */
+    margin-bottom: 10px; /* Espacio entre la imagen y el texto */
+}
+
+#ruleta {
+    position: relative;
+    width: var(--escala);
+    height: var(--escala);
+    border-radius: 50%;
+    border: 2px solid black;
+    overflow: hidden;
+    z-index: 1; /* Asegura que la ruleta esté por encima de la imagen de fondo */
+}
+
+
+
+.opcion {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box; /* Asegura que los bordes no cambien el tamaño del elemento */
+    border-right: 1px solid black; /* Añade borde derecho */
+    border-bottom: 1px solid black; /* Añade borde inferior */
+}
+
+footer {
+    margin-top: 20px; /* Espacio adicional arriba del footer */
+    text-align: center; /* Centra el texto del footer */
+}
