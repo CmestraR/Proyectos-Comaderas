@@ -31,76 +31,98 @@
 const ruleta = document.getElementById("ruleta");
 
 let ganador = "";
+const root = document.documentElement;
+let sorteando = false; 
+let animacionCarga;
+
+const ganadorTexto = document.getElementById("ganadorTexto");
+const ganadorTextoElement = document.getElementById("ganadorTexto");
 
 document.getElementById("sortear").addEventListener("click", () => sortear());
 
 const sigueIntentando1 = { 
     nombre: "Sigue intentando", 
-    probabilidad: 6.25 
+    probabilidad: 6.25,
+    color: "#FFFFFF"
 };
 const argos = { 
-    nombre: "Argos", 
-    probabilidad: 6.25 
+    nombre: "Ganador patrocinado por Argos", 
+    probabilidad: 6.25,
+    color: "#FFFFFF"
 };
 const firplak = { 
-    nombre: "firplak", 
-    probabilidad: 6.25 
+    nombre: "Ganador patrocinado por  firplak", 
+    probabilidad: 6.25,
+    color: "#FFFFFF"
 };
 const sika = { 
-    nombre: "Sika", 
-    probabilidad: 6.25 
+    nombre: "Ganador patrocinado por Sika", 
+    probabilidad: 6.25,
+    color: "#FFFFFF"
 };
 const sigueIntentando2 = { 
     nombre: "Sigue intentando", 
-    probabilidad: 6.25 
+    probabilidad: 6.25,
+    color: "#FFFFFF"
 };
 const pavco = { 
-    nombre: "Pavco", 
-    probabilidad: 6.25 
+    nombre: "Ganador patrocinado por Pavco", 
+    probabilidad: 6.25,
+    color: "#FFFFFF"
 };
 const raspaYGana1 = { 
     nombre: "Raspa y Gana", 
-    probabilidad: 6.25 
+    probabilidad: 6.25,
+    color: "#FFFFFF"
 };
 const rotoPlas = { 
-    nombre: "Roto plas", 
-    probabilidad: 6.25 
+    nombre: "Ganador patrocinado por  Rotoplas", 
+    probabilidad: 6.25,
+    color: "#FFFFFF"
 };
 const sigueIntentando3 = { 
     nombre: "Sigue intentando", 
-    probabilidad: 6.25 
+    probabilidad: 6.25,
 };
 const sigma = { 
-    nombre: "Sigma", 
-    probabilidad: 6.25 
+    nombre: "Ganador patrocinado por  Sigma", 
+    probabilidad: 6.25,
+    color: "#FFFFFF" 
 };
 const brilla = { 
-    nombre: "Brilla", 
-    probabilidad: 6.25 
+    nombre: "Ganador patrocinado por Brilla", 
+    probabilidad: 6.25,
+    color: "#FFFFFF"
 };
 const corona = { 
-    nombre: "Corona", 
-    probabilidad: 6.25 
+    nombre: "Ganador patrocinado por Corona", 
+    probabilidad: 6.25,
+    color: "#FFFFFF" 
 };
 const sigueIntentando4 = { 
     nombre: "Sigue intentando", 
-    probabilidad: 6.25 
+    probabilidad: 6.25,
+    color: "#FFFFFF" 
 };
 const pintuco = { 
-    nombre: "Pintuco", 
-    probabilidad: 6.25 
+    nombre: "Ganador patrocinado por Pintuco", 
+    probabilidad: 6.25,
+    color: "#FFFFFF" 
 };
 const raspaYGana2 = { 
     nombre: "Raspa y Gana", 
-    probabilidad: 6.25 
+    probabilidad: 6.25,
+    color: "#FFFFFF" 
 };
 const mazter = { 
-    nombre: "Mazter", 
-    probabilidad: 6.25 
+    nombre: "Ganador patrocinado por Mazter", 
+    probabilidad: 6.25,
+    color: "#FFFFFF" 
 };
 const sigeIntentando = { 
     nombre: "Sige intentando", 
-    probabilidad: 6.25 
+    probabilidad: 6.25,
+    color: "#FFFFFF"
 };
 
 
@@ -159,7 +181,7 @@ function ajustarRuleta() {
         opcionElement.style = `
             background-color: ${colores[i]};
             transform: rotate(${probabilidadAGrados(pAcumulada)}deg);
-            ${getPosicionParaProbabilidad(concepto.probabilidad)}
+            ${getPosicionParaProbabilidad(concepto.probabilidad)}          
         `
         pAcumulada += concepto.probabilidad
         const separador = document.createElement("div");
@@ -168,12 +190,9 @@ function ajustarRuleta() {
         separador.style = `
             transform: rotate(${probabilidadAGrados(pAcumulada)}deg);
         `
-        ruleta.appendChild(separador);
     })
 
 }
-
-
 
 function getPosicionParaProbabilidad(probabilidad) {
     if (probabilidad === 100) {
@@ -215,17 +234,47 @@ function getPosicionParaProbabilidad(probabilidad) {
 
 
 function sortear() {
+    if(sorteando) return;
+    sorteando = true;
+    ganadorTextoElement.textContent = ".";
+    animacionCarga = setInterval(()=>{
+		switch( ganadorTextoElement.textContent){
+			case ".":
+				ganadorTextoElement.textContent = ".."
+				break;
+			case "..":
+				ganadorTextoElement.textContent = "..."
+				break;
+			default:
+				ganadorTextoElement.textContent = "."
+				break;
+		}
+	} ,500)
     let pAcumulada = 0;
     nSorteo = Math.random();
-    conceptos.forEach(concepto => {
-        if (nSorteo*100 > pAcumulada && nSorteo*100 < pAcumulada+concepto.probabilidad) {
+    ruleta.classList.toggle("girar", true);
+    conceptos.forEach((concepto, i) => {
+        if (nSorteo*100 >= pAcumulada && nSorteo*100 < pAcumulada+concepto.probabilidad) {
             ganador = concepto.nombre;
-            console.log("Ganador", nSorteo*100, concepto.nombre, "porque está entre ",pAcumulada, "y",pAcumulada+concepto.probabilidad)
+            //console.log("Ganador", nSorteo*100, concepto.nombre, "porque está entre ",pAcumulada, "y",pAcumulada+concepto.probabilidad)
         }
         pAcumulada += concepto.probabilidad;
     })
+    const giroRuleta = 10*360 + (1-nSorteo*360)
+    root.style.setProperty("--giroRuleta", giroRuleta+"deg")
 }
 
+ruleta.addEventListener("animationend", ()=>{
+    ruleta.style.transform = "rotate("+getCurrentRotation(ruleta)+"deg)";
+    ruleta.classList.toggle("girar", false);
+    sorteando = false;
+    conceptos.forEach((i) => {
+        ganadorTexto.style = `
+        color: ${conceptos.color}; `
+    })
+    ganadorTexto.textContent = ganador;
+    clearInterval(animacionCarga);
+})
 
 ajustarRuleta(); //Llamado a la función
 
