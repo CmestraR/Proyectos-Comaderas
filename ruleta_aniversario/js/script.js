@@ -27,34 +27,80 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-
-
-
-
-
+document.getElementById("sorterar").addEventListener("click", ()=> sortear());
 
 
 
 const ruleta = document.getElementById("ruleta");
 
 
-const blanco = { nombre: "Blanco", probabilidad: 6.25 };
-const amarillo = { nombre: "Amarillo", probabilidad: 6.25 };
-const naranja = { nombre: "Naranja", probabilidad: 6.25 };
-const blanco4 = { nombre: "Blanco", probabilidad: 6.25 };
-const negro = { nombre: "Negro", probabilidad: 6.25 };
-const azul = { nombre: "Azul", probabilidad: 6.25 };
-const verde = { nombre: "Verde", probabilidad: 6.25 };
-const azulClaro2 = { nombre: "Azul Claro", probabilidad: 6.25 };
-const blanco2 = { nombre: "Blanco", probabilidad: 6.25 };
-const amarillo2 = { nombre: "Amarillo", probabilidad: 6.25 };
-const naranja2 = { nombre: "Naranja", probabilidad: 6.25 };
-const blanco3 = { nombre: "Blanco", probabilidad: 6.25 };
-const negro2 = { nombre: "Negro", probabilidad: 6.25 };
-const azul2 = { nombre: "Azul", probabilidad: 6.25 };
-const verde2 = { nombre: "Verde", probabilidad: 6.25 };
-const azulClaro = { nombre: "Azul Claro", probabilidad: 6.25 };
-const blanco5 = { nombre: "Blanco", probabilidad: 6.25 };
+const blanco = { 
+    nombre: "Blanco", 
+    probabilidad: 6.25 
+};
+const amarillo = { 
+    nombre: "Amarillo", 
+    probabilidad: 6.25
+};
+const naranja = { 
+    nombre: "Naranja", 
+    probabilidad: 6.25 
+};
+const blanco4 = { 
+    nombre: "Blanco", 
+    probabilidad: 6.25 
+};
+const negro = { 
+    nombre: "Negro", 
+    probabilidad: 6.25 
+};
+const azul = { 
+    nombre: "Azul", 
+    probabilidad: 6.25 
+};
+const verde = { 
+    nombre: "Verde", 
+    probabilidad: 6.25 
+};
+const azulClaro2 = { 
+    nombre: "Azul Claro", 
+    probabilidad: 6.25 
+};
+const blanco2 = { 
+    nombre: "Blanco", 
+    probabilidad: 6.25 
+};
+const amarillo2 = { 
+    nombre: "Amarillo", 
+    probabilidad: 6.25 
+};
+const naranja2 = { 
+    nombre: "Naranja", 
+    probabilidad: 6.25 
+};
+const blanco3 = { 
+    nombre: "Blanco", 
+    probabilidad: 6.25 
+};
+const negro2 = { 
+    nombre: "Negro", 
+    probabilidad: 6.25 
+};
+const azul2 = { 
+    nombre: "Azul", 
+    probabilidad: 6.25 
+};
+const verde2 = { 
+    nombre: "Verde", 
+    probabilidad: 6.25 };
+const azulClaro = { 
+    nombre: "Azul Claro", 
+    probabilidad: 6.25 
+};
+const blanco5 = { 
+    nombre: "Blanco", 
+    probabilidad: 6.25 
+};
 
 let conceptos = [
     blanco, 
@@ -161,6 +207,11 @@ function getPosicionParaProbabilidad(probabilidad) {
     }
 }
 
+ajustarRuleta(); //Llamado a la función
 
 
-ajustarRuleta();
+
+function sortear() {
+    nSorteo = Math.random();
+
+}
