@@ -4,27 +4,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="./styles.css">
     <script src="./js/script.js" defer></script>
     <script src="./js/helpers.js"></script>
     <title>Ruleta</title>
 </head>
 
 <body>
-    <div id="main-container">
-        <div id="fondo">
-            <img class="fondo" src="/imagenes/prueba 2.png" alt="imagen de fondo">
+    <!-- Título -->
+    <h1></h1>
+    <div id="container">
+        <img src="./src/RULETA_PARTES/marco con luces Ruleta.png" alt="marcado">
+        <img class="base_ruleta" src="./src/RULETA_PARTES/Recurso 7.png" alt="base">
+        <img class="muñeco" src="./src/PARA FONDO/Gif - Muñeco.gif" alt="muñeco">
+        <img class="titulo" src="./src/PARA FONDO/ANIVERSARIO.png" alt="">
+        <div class="marcas"></div>
+        <!-- Marcador -->
+        <div id="marcador">
+            <div id="cartelGanador">
+                <p id="ganadorTexto">¡Click en "Girar" para iniciar!</p>
+            </div>
         </div>
-        <div id="container">
-            <div id="ruleta"></div>
+
+        <!-- Ruleta -->
+        <div id="ruleta">
+            <!-- <img src="./img/transportador.png" alt=""> -->
+            <div id="sortear">
+                <p>GIRAR</p>
+            </div>
         </div>
-        <button id="sortear">
-            GIRA LA RULETA
-        </button>
-        <footer>
-            <p>Aniversario Comaderas</p>
-        </footer>
     </div>
+    <!-- <button id="settings">SETTINGS</button> -->
+
+    <!-- Modal -->
+    <dialog>
+        <div id="tituloForm">
+            <p>Nombre</p>
+            <p>Probabilidad (%)</p>
+        </div>
+        <div id="formContainer"></div>
+        <button id="agregar">+</button>
+        <p>Total: <span id="porcentaje"></span>%</p>
+        <button id="aceptar">Cambiar</button>
+        <button id="cancelar">Cancelar</button>
+    </dialog>
+
+    <!-- Footer -->
+    <footer>
+        
+    </footer>
 </body>
 
 </html>
