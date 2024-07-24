@@ -57,6 +57,7 @@ function mostrarMarca(ganador) {
         console.log(ganador, "Marca")
     }else if (ganador == '¡Preciona en "Girar" para iniciar!'){
         argos.style.display = 'none';
+        audioFondo.pause();
     }
 }
         

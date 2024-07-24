@@ -65,8 +65,10 @@ document.getElementById("sortear").addEventListener("click", () => {
 
     setTimeout(() => {
         ganadorTexto.textContent = '¡Presiona en "Girar" para iniciar!';
+        audioFondo.pause();
         ocultarImagenes(); // Ocultar imágenes cuando el texto cambia
-    }, 15000);
+        detenerAudioFondo(); // Detener la música cuando el texto cambia
+    }, 30000);
 
 });
 
