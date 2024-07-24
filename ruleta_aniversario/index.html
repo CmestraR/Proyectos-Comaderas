@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./marcas.css">
     <script src="./js/script.js" defer></script>
     <script src="./js/helpers.js"></script>
+    <script src="./js/mostrar_marca.js"></script>
     <title>Ruleta</title>
 </head>
 
@@ -14,12 +16,30 @@
     <!-- Título -->
     <h1></h1>
     <div id="container">
+        
         <img src="./src/RULETA_PARTES/marco con luces Ruleta.png" alt="marcado">
         <img class="base_ruleta" src="./src/RULETA_PARTES/Recurso 7.png" alt="base">
         <img class="muñeco" src="./src/PARA FONDO/Gif - Muñeco.gif" alt="muñeco">
         <img class="titulo" src="./src/PARA FONDO/ANIVERSARIO.png" alt="">
-        <div class="marcas"></div>
-        <!-- Marcador -->
+        <img class="brilla" src="/ruleta_aniversario/src/LOGOS_RULETA/BRILLA.png" alt="">
+        <img class="corona" src="/ruleta_aniversario/src/LOGOS_RULETA/CORONA.png" alt="">
+        <img class="firplak" src="/ruleta_aniversario/src/LOGOS_RULETA/FIRPLAK.png" alt="">
+        <img class="mazter" src="/ruleta_aniversario/src/LOGOS_RULETA/MAZTER.png" alt="">
+        <img class="pavco" src="/ruleta_aniversario/src/LOGOS_RULETA/PAVCO.png" alt="">
+        <img class="pintuco" src="/ruleta_aniversario/src/LOGOS_RULETA/PINTUCO.png" alt="">
+        <img class="raspaYgana" src="/ruleta_aniversario/src/LOGOS_RULETA/RASPA Y GANA.png" alt="">
+        <img class="sika" src="/ruleta_aniversario/src/LOGOS_RULETA/SIKA.png" alt="">
+        <img class="rotoplas" src="/ruleta_aniversario/src/LOGOS_RULETA/ROTOPLAST.png" alt="">
+        <img class="sigma" src="/ruleta_aniversario/src/LOGOS_RULETA/SIGMA.png" alt="">
+        <img class="sige" src="/ruleta_aniversario/src/LOGOS_RULETA/SIGUE.png" alt="">
+        <img class="argos" src="/ruleta_aniversario/src/LOGOS_RULETA/ARGOS.png" alt="">
+
+
+        <!-- <div class="texto">
+            <h1>Participa y gana uno de los increibles 
+            premios <br>patrocinado por los siguientes proveedores</h1>
+        </div> -->
+            <!-- Marcador -->
         <div id="marcador">
             <div id="cartelGanador">
                 <p id="ganadorTexto">¡Click en "Girar" para iniciar!</p>
@@ -34,25 +54,17 @@
             </div>
         </div>
     </div>
-    <!-- <button id="settings">SETTINGS</button> -->
 
-    <!-- Modal -->
-    <dialog>
-        <div id="tituloForm">
-            <p>Nombre</p>
-            <p>Probabilidad (%)</p>
-        </div>
-        <div id="formContainer"></div>
-        <button id="agregar">+</button>
-        <p>Total: <span id="porcentaje"></span>%</p>
-        <button id="aceptar">Cambiar</button>
-        <button id="cancelar">Cancelar</button>
-    </dialog>
 
     <!-- Footer -->
     <footer>
         
     </footer>
+    <!-- <button id="iniciarAudio">Iniciar Audio</button> -->
+    <audio id="audioReproduccion" src="/ruleta_aniversario/src/RULETA_PARTES/Audio Ruleta.mp3" preload="auto"></audio>
+    <audio id="audioFondo" src="/ruleta_aniversario/src/RULETA_PARTES/Auido fondo.mp3" preload="auto" loop></audio>
+
+
 </body>
 
 </html>

@@ -24,10 +24,7 @@ body {
     overflow: hidden; /* Evita el desbordamiento de la imagen */
     z-index: 0;
 }
-h1{
-	text-align: center;
-	user-select: none;
-}
+
 
 .fondo {
     width: 100%;
@@ -106,30 +103,32 @@ img {
     z-index: -1;
 }
 
-.marcas{
+
+
+.texto{
     position: absolute;
-    left: 130px;
-    top: 250px;
+    left: 40px;
+}
+
+h1{
+    position: relative;
+    top: 20px;
+    text-align: center;
+    left: 50px;
+    font-size: 15px;
+    color: black;
     background-color: rgb(255, 255, 255);
-    min-height: 170px;
-    width: 220px;
-    color: bisque;
-    background-image: url('./src/LOGOS_RULETA/ARGOS.png');
-    background-size: contain;  
-    background-repeat: no-repeat; 
-    background-position: center; 
-    margin-bottom: 10px; 
 
 }
 
 .titulo {
     position: absolute;
-    top: 90px;
+    top: 20px;
     z-index: 1;
     width: 400px;
     height: auto;
     left: 50px;
-    z-index: -1;
+    z-index: 1;
 }
 
 
@@ -170,6 +169,8 @@ img {
     
 }
 
+
+
 #sortear{
 	position: absolute;
 	background-color: rgb(32, 30, 30);
@@ -188,6 +189,7 @@ img {
 	border: 1px solid black;
     color: white;
     font-size: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .opcion {

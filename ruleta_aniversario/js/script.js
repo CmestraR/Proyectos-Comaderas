@@ -1,128 +1,136 @@
 
-// document.addEventListener('DOMContentLoaded', () => {
-//     const button = document.getElementById('sortear');
-//     let isRed = true; // Variable para alternar colores
-
-//     // Función para alternar colores
-//     const intervalId = setInterval(() => {
-//         button.style.backgroundColor = isRed ? 'red' : 'white';
-//         isRed = !isRed; // Alterna entre true y false
-//     }, 600); // Cambia de color cada medio segundo
-
-//     button.addEventListener('click', () => {
-//         // Detiene el destello
-//         clearInterval(intervalId);
-        
-//         // Oculta el botón
-//         button.style.display = 'none';
-
-//         // Reaparece el botón después de 20 segundos
-//         setTimeout(() => {
-//             button.style.display = 'block';
-//             // Reinicia el destello al reaparecer
-//             const newIntervalId = setInterval(() => {
-//                 button.style.backgroundColor = isRed ? 'red' : 'white';
-//                 isRed = !isRed; // Alterna entre true y false
-//             }, 500); // Cambia de color cada medio segundo
-//         }, 20000); // 20,000 ms = 20 segundos
-//     });
-// });
-
 const ruleta = document.getElementById("ruleta");
-
 let ganador = "";
 const root = document.documentElement;
-let sorteando = false; 
+let sorteando = false;
 let animacionCarga;
-
+let animacionMostrarMarcas;
 const ganadorTexto = document.getElementById("ganadorTexto");
 const ganadorTextoElement = document.getElementById("ganadorTexto");
+const audioFondo = document.getElementById('audioFondo'); // Elemento de audio de fondo
 
-document.getElementById("sortear").addEventListener("click", () => sortear());
 
-const sigueIntentando1 = { 
-    nombre: "Sigue intentando", 
+function iniciarAudioFondo() {
+    if (audioFondo) {
+        audioFondo.play().catch(error => {
+            console.error('Error al reproducir el audio de fondo:', error);
+        });
+    }
+}
+
+
+function ocultarImagenes() {
+    const imagenesEspecificas = [
+        '.brilla',
+        '.corona',
+        '.firplak',
+        '.mazter',
+        '.pavco',
+        '.pintuco',
+        '.raspaYgana',
+        '.sika',
+        '.rotoplas',
+        '.sigma',
+        '.sige',
+        '.argos'
+    ].map(selector => document.querySelector(selector));
+    imagenesEspecificas.forEach(img => img.style.display = 'none');
+}
+
+function detenerAudioFondo() {
+    if (audioFondo) {
+        audioFondo.pause();
+        audioFondo.currentTime = 0; // Reiniciar el tiempo de reproducción
+    }
+
+}
+
+document.getElementById("sortear").addEventListener("click", () => {
+    ocultarImagenes();
+    sortear();
+    detenerAudioFondo();
+    setTimeout(() => {
+        mostrarMarca(ganador)
+        iniciarAudioFondo()
+    }, 5280);
+
+    // Reproducir el audio
+    if (audioReproduccion) {
+        audioReproduccion.play().catch(error => {
+            console.error('Error al reproducir el audio:', error);
+        });
+    }
+
+});
+
+const sigueIntentando1 = {
+    nombre: "Sigue intentando",
     probabilidad: 6.25,
-    color: "#FFFFFF"
 };
-const argos = { 
-    nombre: "Ganador patrocinado por Argos", 
-    probabilidad: 6.25,
-    color: "#FFFFFF"
-};
-const firplak = { 
-    nombre: "Ganador patrocinado por  firplak", 
-    probabilidad: 6.25,
-    color: "#FFFFFF"
-};
-const sika = { 
-    nombre: "Ganador patrocinado por Sika", 
-    probabilidad: 6.25,
-    color: "#FFFFFF"
-};
-const sigueIntentando2 = { 
-    nombre: "Sigue intentando", 
-    probabilidad: 6.25,
-    color: "#FFFFFF"
-};
-const pavco = { 
-    nombre: "Ganador patrocinado por Pavco", 
-    probabilidad: 6.25,
-    color: "#FFFFFF"
-};
-const raspaYGana1 = { 
-    nombre: "Raspa y Gana", 
-    probabilidad: 6.25,
-    color: "#FFFFFF"
-};
-const rotoPlas = { 
-    nombre: "Ganador patrocinado por  Rotoplas", 
-    probabilidad: 6.25,
-    color: "#FFFFFF"
-};
-const sigueIntentando3 = { 
-    nombre: "Sigue intentando", 
+const argos = {
+    nombre: "Ganador patrocinado por Argos",
     probabilidad: 6.25,
 };
-const sigma = { 
-    nombre: "Ganador patrocinado por  Sigma", 
+const firplak = {
+    nombre: "Ganador patrocinado por  firplak",
     probabilidad: 6.25,
-    color: "#FFFFFF" 
 };
-const brilla = { 
-    nombre: "Ganador patrocinado por Brilla", 
+const sika = {
+    nombre: "Ganador patrocinado por Sika",
     probabilidad: 6.25,
-    color: "#FFFFFF"
 };
-const corona = { 
-    nombre: "Ganador patrocinado por Corona", 
+const sigueIntentando2 = {
+    nombre: "Sigue intentando",
     probabilidad: 6.25,
-    color: "#FFFFFF" 
 };
-const sigueIntentando4 = { 
-    nombre: "Sigue intentando", 
+const pavco = {
+    nombre: "Ganador patrocinado por Pavco",
     probabilidad: 6.25,
-    color: "#FFFFFF" 
 };
-const pintuco = { 
-    nombre: "Ganador patrocinado por Pintuco", 
+const raspaYGana1 = {
+    nombre: "Raspa y Gana",
     probabilidad: 6.25,
-    color: "#FFFFFF" 
 };
-const raspaYGana2 = { 
-    nombre: "Raspa y Gana", 
+const rotoPlas = {
+    nombre: "Ganador patrocinado por  Rotoplas",
     probabilidad: 6.25,
-    color: "#FFFFFF" 
 };
-const mazter = { 
-    nombre: "Ganador patrocinado por Mazter", 
+const sigueIntentando3 = {
+    nombre: "Sigue intentando",
     probabilidad: 6.25,
-    color: "#FFFFFF" 
 };
-const sigeIntentando = { 
-    nombre: "Sige intentando", 
+const sigma = {
+    nombre: "Ganador patrocinado por  Sigma",
     probabilidad: 6.25,
-    color: "#FFFFFF"
+};
+const brilla = {
+    nombre: "Ganador patrocinado por Brilla",
+    probabilidad: 6.25,
+};
+const corona = {
+    nombre: "Ganador patrocinado por Corona",
+    probabilidad: 6.25,
+};
+const sigueIntentando4 = {
+    nombre: "Sigue intentando",
+    probabilidad: 6.25,
+};
+const pintuco = {
+    nombre: "Ganador patrocinado por Pintuco",
+    probabilidad: 6.25,
+
+};
+const raspaYGana2 = {
+    nombre: "Raspa y Gana",
+    probabilidad: 6.25,
+};
+const mazter = {
+    nombre: "Ganador patrocinado por Mazter",
+    probabilidad: 6.25,
+};
+const sigeIntentando = {
+    nombre: "Sige intentando",
+    probabilidad: 6.25,
 };
 
 
@@ -170,10 +178,10 @@ const colores = [
 
 function ajustarRuleta() {
     const opcionesContainer = document.createElement("div");
-    opcionesContainer.id = "opcionesContainer"
+    opcionesContainer.id = "opcionesContainer";
     ruleta.appendChild(opcionesContainer);
     let pAcumulada = 0;
-    //Crear contenido dinamico dentro de la ruleta
+
     conceptos.forEach((concepto, i) => {
         const opcionElement = document.createElement("div");
         opcionElement.classList.add("opcion");
@@ -181,18 +189,25 @@ function ajustarRuleta() {
         opcionElement.style = `
             background-color: ${colores[i]};
             transform: rotate(${probabilidadAGrados(pAcumulada)}deg);
-            ${getPosicionParaProbabilidad(concepto.probabilidad)}          
-        `
-        pAcumulada += concepto.probabilidad
+            ${getPosicionParaProbabilidad(concepto.probabilidad)}
+        `;
+
+        const imagen = document.createElement("img");
+        //imagen.src = concepto.imagen;
+        // Añadir una clase específica basada en el nombre
+        imagen.classList.add(`imagen-${concepto.nombre.toLowerCase().replace(/\s+/g, '-')}`);
+        opcionElement.appendChild(imagen);
+        pAcumulada += concepto.probabilidad;
         const separador = document.createElement("div");
         separador.classList.add("separador");
         ruleta.appendChild(separador);
         separador.style = `
             transform: rotate(${probabilidadAGrados(pAcumulada)}deg);
-        `
-    })
-
+        `;
+    });
 }
+
+
 
 function getPosicionParaProbabilidad(probabilidad) {
     if (probabilidad === 100) {
@@ -234,48 +249,50 @@ function getPosicionParaProbabilidad(probabilidad) {
 
 
 function sortear() {
-    if(sorteando) return;
+    if (sorteando) return;
     sorteando = true;
     ganadorTextoElement.textContent = ".";
-    animacionCarga = setInterval(()=>{
-		switch( ganadorTextoElement.textContent){
-			case ".":
-				ganadorTextoElement.textContent = ".."
-				break;
-			case "..":
-				ganadorTextoElement.textContent = "..."
-				break;
-			default:
-				ganadorTextoElement.textContent = "."
-				break;
-		}
-	} ,500)
+    animacionCarga = setInterval(() => {
+        switch (ganadorTextoElement.textContent) {
+            case ".":
+                ganadorTextoElement.textContent = ".."
+                break;
+            case "..":
+                ganadorTextoElement.textContent = "..."
+                break;
+            default:
+                ganadorTextoElement.textContent = "."
+                break;
+        }
+    }, 500)
     let pAcumulada = 0;
     nSorteo = Math.random();
     ruleta.classList.toggle("girar", true);
     conceptos.forEach((concepto, i) => {
-        if (nSorteo*100 >= pAcumulada && nSorteo*100 < pAcumulada+concepto.probabilidad) {
+        if (nSorteo * 100 >= pAcumulada && nSorteo * 100 < pAcumulada + concepto.probabilidad) {
             ganador = concepto.nombre;
+            ganador = ganador;
+            // 5280 milisegundos = 5.28 segundos 
             //console.log("Ganador", nSorteo*100, concepto.nombre, "porque está entre ",pAcumulada, "y",pAcumulada+concepto.probabilidad)
         }
         pAcumulada += concepto.probabilidad;
+        console.log(ganador);
     })
-    const giroRuleta = 10*360 + (1-nSorteo*360)
-    root.style.setProperty("--giroRuleta", giroRuleta+"deg")
+    const giroRuleta = 10 * 360 + (1 - nSorteo * 360)
+    root.style.setProperty("--giroRuleta", giroRuleta + "deg")
 }
 
-ruleta.addEventListener("animationend", ()=>{
-    ruleta.style.transform = "rotate("+getCurrentRotation(ruleta)+"deg)";
+ruleta.addEventListener("animationend", () => {
+    ruleta.style.transform = "rotate(" + getCurrentRotation(ruleta) + "deg)";
     ruleta.classList.toggle("girar", false);
     sorteando = false;
-    conceptos.forEach((i) => {
-        ganadorTexto.style = `
-        color: ${conceptos.color}; `
-    })
     ganadorTexto.textContent = ganador;
     clearInterval(animacionCarga);
+    clearInterval(animacionMostrarMarcas);
 })
 
+iniciarAudioFondo();
+//compararYMostrarImagen(); //Ejecutar la función para comparar y mostrar la imagen
 ajustarRuleta(); //Llamado a la función
 
 
