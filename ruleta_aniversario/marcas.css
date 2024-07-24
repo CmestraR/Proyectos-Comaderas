@@ -2,7 +2,6 @@
     position: absolute;
     left: 50px;
     top: 170px;
-    background-color: rgb(255, 255, 255);
     min-height: 100px;
     height: auto;
     width: 350px;
@@ -15,7 +14,6 @@
     position: absolute;
     left: 50px;
     top: 170px;
-    background-color: rgb(255, 255, 255);
     min-height: 100px;
     height: auto;
     width: 350px;
@@ -29,140 +27,127 @@
     position: absolute;
     left: 50px;
     top: 170px;
-    background-color: rgb(255, 255, 255);
     min-height: 100px;
     height: auto;
     width: 350px;
     color: bisque;
     margin-bottom: 10px; 
     z-index: -1;
-    background-color: rgb(0, 0, 0);
     display: none;
 }
 .firplak{
     position: absolute;
     left: 50px;
     top: 170px;
-    background-color: rgb(255, 255, 255);
     min-height: 100px;
     height: auto;
     width: 350px;
     color: bisque;
     margin-bottom: 10px; 
     z-index: -1;
-    background-color: rgb(0, 0, 0);
     display: none;
 }
 .mazter{
     position: absolute;
     left: 50px;
     top: 170px;
-    background-color: rgb(255, 255, 255);
     min-height: 100px;
     height: auto;
     width: 350px;
     color: bisque;
     margin-bottom: 10px; 
     z-index: -1;
-    background-color: rgb(0, 0, 0);
     display: none;
 }
 .pavco{
     position: absolute;
     left: 50px;
     top: 170px;
-    background-color: rgb(255, 255, 255);
     min-height: 100px;
     height: auto;
     width: 350px;
     color: bisque;
     margin-bottom: 10px; 
     z-index: -1;
-    background-color: rgb(0, 0, 0);
     display: none;
 }
 .pintuco{
     position: absolute;
     left: 50px;
     top: 170px;
-    background-color: rgb(255, 255, 255);
     min-height: 100px;
     height: auto;
     width: 350px;
     color: bisque;
     margin-bottom: 10px; 
     z-index: -1;
-    background-color: rgb(0, 0, 0);
     display: none;
 }
 .raspaYgana{
     position: absolute;
     left: 50px;
     top: 170px;
-    background-color: rgb(255, 255, 255);
     min-height: 100px;
     height: auto;
     width: 350px;
     color: bisque;
     margin-bottom: 10px; 
     z-index: -1;
-    background-color: rgb(0, 0, 0);
     display: none;
 }
 .rotoplas{
     position: absolute;
     left: 50px;
     top: 170px;
-    background-color: rgb(255, 255, 255);
     min-height: 100px;
     height: auto;
     width: 350px;
     color: bisque;
     margin-bottom: 10px; 
     z-index: -1;
-    background-color: rgb(0, 0, 0);
     display: none;
 }
 .sigma{
     position: absolute;
     left: 50px;
     top: 170px;
-    background-color: rgb(255, 255, 255);
     min-height: 100px;
     height: auto;
     width: 350px;
     color: bisque;
     margin-bottom: 10px; 
     z-index: -1;
-    background-color: rgb(0, 0, 0);
     display: none;
 }
 .sika{
     position: absolute;
     left: 50px;
     top: 170px;
-    background-color: rgb(255, 255, 255);
     min-height: 100px;
     height: auto;
     width: 350px;
     color: bisque;
     margin-bottom: 10px; 
     z-index: -1;
-    background-color: rgb(0, 0, 0);
     display: none;
 }
 .sige{
     position: absolute;
     left: 50px;
     top: 170px;
-    background-color: rgb(255, 255, 255);
     min-height: 100px;
     height: auto;
     width: 350px;
     color: bisque;
     margin-bottom: 10px; 
     z-index: -1;
-    background-color: rgb(0, 0, 0);
     display: none;
+}
+
+.marco {
+    top: -160px;
+    width: 350px;
+    height: auto;
+    z-index: 1;
 }
 

@@ -45,13 +45,15 @@ function detenerAudioFondo() {
 
 }
 
+
+
 document.getElementById("sortear").addEventListener("click", () => {
     ocultarImagenes();
     sortear();
     detenerAudioFondo();
     setTimeout(() => {
-        mostrarMarca(ganador)
-        iniciarAudioFondo()
+        mostrarMarca(ganador);
+        iniciarAudioFondo();
     }, 5280);
 
     // Reproducir el audio
@@ -60,6 +62,11 @@ document.getElementById("sortear").addEventListener("click", () => {
             console.error('Error al reproducir el audio:', error);
         });
     }
+
+    setTimeout(() => {
+        ganadorTexto.textContent = '¡Presiona en "Girar" para iniciar!';
+        ocultarImagenes(); // Ocultar imágenes cuando el texto cambia
+    }, 15000);
 
 });
 
@@ -72,7 +79,7 @@ const argos = {
     probabilidad: 6.25,
 };
 const firplak = {
-    nombre: "Ganador patrocinado por  firplak",
+    nombre: "Ganador patrocinado por Firplak",
     probabilidad: 6.25,
 };
 const sika = {
@@ -92,7 +99,7 @@ const raspaYGana1 = {
     probabilidad: 6.25,
 };
 const rotoPlas = {
-    nombre: "Ganador patrocinado por  Rotoplas",
+    nombre: "Ganador patrocinado por Rotoplas",
     probabilidad: 6.25,
 };
 const sigueIntentando3 = {
@@ -100,7 +107,7 @@ const sigueIntentando3 = {
     probabilidad: 6.25,
 };
 const sigma = {
-    nombre: "Ganador patrocinado por  Sigma",
+    nombre: "Ganador patrocinado por Sigma",
     probabilidad: 6.25,
 };
 const brilla = {
@@ -290,6 +297,7 @@ ruleta.addEventListener("animationend", () => {
     clearInterval(animacionCarga);
     clearInterval(animacionMostrarMarcas);
 })
+
 
 iniciarAudioFondo();
 //compararYMostrarImagen(); //Ejecutar la función para comparar y mostrar la imagen

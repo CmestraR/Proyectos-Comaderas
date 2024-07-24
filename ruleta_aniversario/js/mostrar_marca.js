@@ -12,38 +12,51 @@ function mostrarMarca(ganador) {
     const sigma = document.querySelector('.sigma');
     const sige = document.querySelector('.sige');
     const sika = document.querySelector('.sika');
+    const quitar = document.querySelector('.ganadorTexto')
 
     // Ocultar todas las imágenes inicialmente
     const todasLasImagenes = [argos, brilla, corona, firplak, mazter, pavco, pintuco, raspaYgana, rotoplas, sigma, sige, sika];
     todasLasImagenes.forEach(img => img.style.display = 'none');
+    
 
     // Mostrar la imagen correspondiente según el ganador
     if (ganador === "Ganador patrocinado por Argos") {
         argos.style.display = 'block';
+        console.log(ganador, "Marca")
     } else if (ganador === "Ganador patrocinado por Brilla") {
         brilla.style.display = 'block';
+        console.log(ganador, "Marca")
     } else if (ganador === "Ganador patrocinado por Corona") {
         corona.style.display = 'block';
+        console.log(ganador, "Marca")
     } else if (ganador === "Ganador patrocinado por Firplak") {
         firplak.style.display = 'block';
+        console.log(ganador, "Marca")
     } else if (ganador === "Ganador patrocinado por Mazter") {
         mazter.style.display = 'block';
+        console.log(ganador, "Marca")
     } else if (ganador === "Ganador patrocinado por Pavco") {
         pavco.style.display = 'block';
+        console.log(ganador, "Marca")
     } else if (ganador === "Ganador patrocinado por Pintuco") {
         pintuco.style.display = 'block';
+        console.log(ganador, "Marca")
     } else if (ganador === "Raspa y Gana") {
         raspaYgana.style.display = 'block';
+        console.log(ganador, "Marca")
     } else if (ganador === "Ganador patrocinado por Rotoplas") {
         rotoplas.style.display = 'block';
     } else if (ganador === "Ganador patrocinado por Sigma") {
+        console.log(ganador, "Marca")
         sigma.style.display = 'block';
     } else if (ganador === "Sigue intentando") {
         sige.style.display = 'block';
+        console.log(ganador, "Marca")
     } else if (ganador === "Ganador patrocinado por Sika") {
         sika.style.display = 'block';
+        console.log(ganador, "Marca")
+    }else if (ganador == '¡Preciona en "Girar" para iniciar!'){
+        argos.style.display = 'none';
     }
-    
-    console.log('Mostrar marca', ganador);
 }
         
