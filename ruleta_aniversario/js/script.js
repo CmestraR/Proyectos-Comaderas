@@ -8,6 +8,7 @@ let animacionMostrarMarcas;
 const ganadorTexto = document.getElementById("ganadorTexto");
 const ganadorTextoElement = document.getElementById("ganadorTexto");
 const audioFondo = document.getElementById('audioFondo'); // Elemento de audio de fondo
+const audioConfeti = document.getElementById('audioConfeti'); // Elemento de audio para el confeti
 
 
 function iniciarAudioFondo() {
@@ -18,6 +19,19 @@ function iniciarAudioFondo() {
     }
 }
 
+function lanzarConfeti() {
+    if (!ganadorTexto.textContent.includes("Sigue intentando")) {
+        confetti({
+            particleCount: 200,
+            spread: 160
+        });
+        if (audioConfeti) {
+            audioConfeti.play().catch(error => {
+                console.error('Error al reproducir el sonido del confeti:', error);
+            });
+        }
+    }
+}
 
 function ocultarImagenes() {
     const imagenesEspecificas = [
@@ -39,6 +53,7 @@ function ocultarImagenes() {
 
 function detenerAudioFondo() {
     if (audioFondo) {
+
         audioFondo.pause();
         audioFondo.currentTime = 0; // Reiniciar el tiempo de reproducción
     }
@@ -54,6 +69,7 @@ document.getElementById("sortear").addEventListener("click", () => {
     setTimeout(() => {
         mostrarMarca(ganador);
         iniciarAudioFondo();
+        lanzarConfeti();
     }, 5280);
 
     // Reproducir el audio
