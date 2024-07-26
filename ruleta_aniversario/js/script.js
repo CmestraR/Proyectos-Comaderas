@@ -11,6 +11,14 @@ const audioFondo = document.getElementById('audioFondo'); // Elemento de audio d
 const audioConfeti = document.getElementById('audioConfeti'); // Elemento de audio para el confeti
 
 
+function detenerAudioFondo() {
+    if (audioFondo) {
+        audioFondo.pause();
+        audioFondo.currentTime = 0; // Reiniciar el tiempo de reproducción
+    }
+
+}
+
 function iniciarAudioFondo() {
     if (audioFondo) {
         audioFondo.play().catch(error => {
@@ -51,14 +59,7 @@ function ocultarImagenes() {
     imagenesEspecificas.forEach(img => img.style.display = 'none');
 }
 
-function detenerAudioFondo() {
-    if (audioFondo) {
 
-        audioFondo.pause();
-        audioFondo.currentTime = 0; // Reiniciar el tiempo de reproducción
-    }
-
-}
 
 
 
@@ -68,7 +69,10 @@ document.getElementById("sortear").addEventListener("click", () => {
     detenerAudioFondo();
     setTimeout(() => {
         mostrarMarca(ganador);
-        iniciarAudioFondo();
+        iniciarAudioFondo(); // Lanzar confeti 5.28 segundos después de hacer clic
+        if (ganadorTexto.textContent.includes("Sigue intentando")) {
+            detenerAudioFondo(); // Detener la música si el ganador es "Sigue intentando"
+        } 
         lanzarConfeti();
     }, 5280);
 
@@ -90,72 +94,72 @@ document.getElementById("sortear").addEventListener("click", () => {
 
 const sigueIntentando1 = {
     nombre: "Sigue intentando",
-    probabilidad: 6.25,
+    probabilidad: 10.5,
 };
 const argos = {
     nombre: "Ganador patrocinado por Argos",
-    probabilidad: 6.25,
+    probabilidad: 5.25,
 };
 const firplak = {
     nombre: "Ganador patrocinado por Firplak",
-    probabilidad: 6.25,
+    probabilidad: 6.00,
 };
 const sika = {
     nombre: "Ganador patrocinado por Sika",
-    probabilidad: 6.25,
+    probabilidad: 5.25,
 };
 const sigueIntentando2 = {
     nombre: "Sigue intentando",
-    probabilidad: 6.25,
+    probabilidad: 10.5,
 };
 const pavco = {
     nombre: "Ganador patrocinado por Pavco",
-    probabilidad: 6.25,
+    probabilidad: 5.65,
 };
 const raspaYGana1 = {
     nombre: "Raspa y Gana",
-    probabilidad: 6.25,
+    probabilidad: 3.25,
 };
 const rotoPlas = {
     nombre: "Ganador patrocinado por Rotoplas",
-    probabilidad: 6.25,
+    probabilidad: 5.25,
 };
 const sigueIntentando3 = {
     nombre: "Sigue intentando",
-    probabilidad: 6.25,
+    probabilidad: 10.5,
 };
 const sigma = {
     nombre: "Ganador patrocinado por Sigma",
-    probabilidad: 6.25,
+    probabilidad: 5.25,
 };
 const brilla = {
     nombre: "Ganador patrocinado por Brilla",
-    probabilidad: 6.25,
+    probabilidad: 4.25,
 };
 const corona = {
     nombre: "Ganador patrocinado por Corona",
-    probabilidad: 6.25,
+    probabilidad: 5.25,
 };
 const sigueIntentando4 = {
     nombre: "Sigue intentando",
-    probabilidad: 6.25,
+    probabilidad: 9.5,
 };
 const pintuco = {
     nombre: "Ganador patrocinado por Pintuco",
-    probabilidad: 6.25,
+    probabilidad: 5.25,
 
 };
 const raspaYGana2 = {
     nombre: "Raspa y Gana",
-    probabilidad: 6.25,
+    probabilidad: 3.25,
 };
 const mazter = {
     nombre: "Ganador patrocinado por Mazter",
-    probabilidad: 6.25,
+    probabilidad: 5.25,
 };
 const sigeIntentando = {
     nombre: "Sige intentando",
-    probabilidad: 6.25,
+    probabilidad: 10.5,
 };
 
 
@@ -317,7 +321,6 @@ ruleta.addEventListener("animationend", () => {
 })
 
 
-iniciarAudioFondo();
 //compararYMostrarImagen(); //Ejecutar la función para comparar y mostrar la imagen
 ajustarRuleta(); //Llamado a la función
 
