@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <template id="assets_frontend" name="Custom Web Site" inherit_id="web.assets_frontend">
+    <template id="Web Site" name="Custom Web Site" inherit_id="web.assets_frontend">
         <xpath expr="." position="inside">
             <!-- Ruta del archivo CSS -->
             <link rel="stylesheet" type="text/css" href="/custom_website/static/src/css/custom_style.css"/>
